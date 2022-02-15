@@ -20,7 +20,7 @@ public class Empresa {
         generateTables();
     }
 
-    public void generateTables() {
+    private void generateTables() {
         hastaAnnos = new int[]{5, 10, 20, Integer.MAX_VALUE};
         hastaHijos = new int[]{1, 2, Integer.MAX_VALUE};
         incentivo = new float[][]{
@@ -32,7 +32,7 @@ public class Empresa {
     }
 
     /**
-     * Se introduce la información del empleado
+     * Se pide la información del empleado
      */
     public void pedirEmpleados() {
         String nombre;
@@ -49,6 +49,9 @@ public class Empresa {
         }
     }
 
+    /**
+     * Crea un informe con los datos de los empleados introducidos
+     */
     public void printInforme() {
         System.out.println("\t\tINFORME ANUAL"
                 + "\nNombre\tNºde hijos\tFecha nacimiento hijos\tIncentivo\tObservaciones"
@@ -58,6 +61,11 @@ public class Empresa {
         }
     }
 
+    /**
+     * Calcula el incentivo
+     * @param empleadoC recoge el empleado al que calcularselo
+     * @return devuelve un float con el resultado
+     */
     private float calcIncentivo(Empleado empleadoC) {
         float incentivoR = 0;
         int annosTrabajando;

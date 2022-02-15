@@ -81,6 +81,10 @@ public class Empleado {
 
     }
 
+    /**
+     * 
+     * @return Devuelve al primer hijo introducido del empleado
+     */
     public String fechaHijoZero(){
         String fecha="";
         if(hijos.length!=0){
@@ -89,6 +93,10 @@ public class Empleado {
         return fecha;
     }
     
+    /**
+     * 
+     * @return Devuelve todos menos el primer hijo en un string preparado para el informe
+     */
     public String fechaHijosResto(){
         String fechas="";
         for(int i=1;i<hijos.length;i++){

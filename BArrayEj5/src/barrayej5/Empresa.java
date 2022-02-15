@@ -39,7 +39,7 @@ public class Empresa {
         Fecha fechaAlta;
         int numHijos;
         for (int i = 0; i < empleados.length; i++) {
-            System.out.println("Empleado "+i+"\n---------");
+            System.out.println("Empleado "+(i+1)+"\n----------");
             empleados[i] = new Empleado();
             nombre = EntradaTextos.inputString("Introduzca el nombre del empleado: ");
             fechaAlta = EntradaTextos.inputFechaPasada("Introduzca su fecha de alta en la empresa: ");

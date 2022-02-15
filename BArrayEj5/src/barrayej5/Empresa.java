@@ -39,10 +39,11 @@ public class Empresa {
         Fecha fechaAlta;
         int numHijos;
         for (int i = 0; i < empleados.length; i++) {
+            System.out.println("Empleado "+i+"\n---------");
             empleados[i] = new Empleado();
             nombre = EntradaTextos.inputString("Introduzca el nombre del empleado: ");
             fechaAlta = EntradaTextos.inputFechaPasada("Introduzca su fecha de alta en la empresa: ");
-            numHijos = EntradaNumeros.numIntGrater("Introduzca el número de hijos", 0);
+            numHijos = EntradaNumeros.numIntGrater("Introduzca el número de hijos: ", 0);
             empleados[i].setHijos(numHijos);
             empleados[i].setInfo(nombre, fechaAlta);
         }
@@ -59,7 +60,7 @@ public class Empresa {
 
     private float calcIncentivo(Empleado empleadoC) {
         float incentivoR = 0;
-
+        int annosTrabajando;
         int x = 0, y = 0;
         if (empleadoC.numHijos() != 0) {
             for (int nH = 0; nH < hastaHijos.length; nH++) {
@@ -68,10 +69,11 @@ public class Empresa {
                     break;
                 }
             }
-            y = Fecha.calcularEnios(empleadoC.getFechaAlta(), 1);
+            annosTrabajando = Fecha.calcularEnios(empleadoC.getFechaAlta(), 1);
             for (int aH = 0; aH < this.hastaAnnos.length; aH++) {
-                if (this.hastaAnnos[aH] >= y) {
+                if (this.hastaAnnos[aH] >= annosTrabajando) {
                     y = aH;
+                    break;
                 }
             }
             incentivoR = this.incentivo[y][x];

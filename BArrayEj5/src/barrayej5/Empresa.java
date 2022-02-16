@@ -12,7 +12,6 @@ public class Empresa {
 
     private Empleado[] empleados;
     private int[] hastaAnnos;
-    private int[] hastaHijos;//hacer if lenght or .-1 mejorar
     private float[][] incentivo;
 
     public Empresa(int numEmpleados) {
@@ -22,7 +21,6 @@ public class Empresa {
 
     private void generateTables() {
         hastaAnnos = new int[]{5, 10, 20, Integer.MAX_VALUE};
-        hastaHijos = new int[]{1, 2, Integer.MAX_VALUE};
         incentivo = new float[][]{
             {100, 250, 500},
             {200, 400, 800},
@@ -39,7 +37,7 @@ public class Empresa {
         Fecha fechaAlta;
         int numHijos;
         for (int i = 0; i < empleados.length; i++) {
-            System.out.println("Empleado "+(i+1)+"\n----------");
+            System.out.println("Empleado " + (i + 1) + "\n----------");
             empleados[i] = new Empleado();
             nombre = EntradaTextos.inputString("Introduzca el nombre del empleado: ");
             fechaAlta = EntradaTextos.inputFechaPasada("Introduzca su fecha de alta en la empresa: ");
@@ -63,6 +61,7 @@ public class Empresa {
 
     /**
      * Calcula el incentivo
+     *
      * @param empleadoC recoge el empleado al que calcularselo
      * @return devuelve un float con el resultado
      */
@@ -71,11 +70,10 @@ public class Empresa {
         int annosTrabajando;
         int x = 0, y = 0;
         if (empleadoC.numHijos() != 0) {
-            for (int nH = 0; nH < hastaHijos.length; nH++) {
-                if (this.hastaHijos[nH] >= empleadoC.numHijos()) {
-                    x = nH;
-                    break;
-                }
+            if (empleadoC.numHijos() < 3) {
+                x = empleadoC.numHijos() - 1;
+            } else {
+                x = 2;
             }
             annosTrabajando = Fecha.calcularEnios(empleadoC.getFechaAlta(), 1);
             for (int aH = 0; aH < this.hastaAnnos.length; aH++) {

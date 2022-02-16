@@ -12,7 +12,7 @@ public class Empresa {
 
     private Empleado[] empleados;
     private int[] hastaAnnos;
-    private int[] hastaHijos;
+    private int[] hastaHijos;//hacer if lenght or .-1 mejorar
     private float[][] incentivo;
 
     public Empresa(int numEmpleados) {

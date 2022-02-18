@@ -70,17 +70,21 @@ public class Empresa {
         int annosTrabajando;
         int x = 0, y = 0;
         if (empleadoC.numHijos() != 0) {
-            if (empleadoC.numHijos() < 3) {
+            if (empleadoC.numHijos() < incentivo[0].length) {
                 x = empleadoC.numHijos() - 1;
             } else {
-                x = 2;
+                x = incentivo[0].length-1;
             }
             annosTrabajando = Fecha.calcularEnios(empleadoC.getFechaAlta(), 1);
-            for (int aH = 0; aH < this.hastaAnnos.length; aH++) {
-                if (this.hastaAnnos[aH] >= annosTrabajando) {
-                    y = aH;
-                    break;
-                }
+//            for (int aH = 0; aH < this.hastaAnnos.length; aH++) {
+//                if (this.hastaAnnos[aH] >= annosTrabajando) {
+//                    y = aH;
+//                    break;
+//                }
+//            }
+            y=0;
+            while(this.hastaAnnos[y] <= annosTrabajando){
+                y++;
             }
             incentivoR = this.incentivo[y][x];
         }

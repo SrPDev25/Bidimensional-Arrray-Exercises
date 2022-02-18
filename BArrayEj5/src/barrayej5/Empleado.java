@@ -75,16 +75,17 @@ public class Empleado {
 
     /**
      * Mas optimo a great18, no hace falta hace dos veces el mismo metodo
-     * @return 
+     *
+     * @return
      */
-    public int numHijosRest(){
-        int numHijos=0;
+    public int numHijosRest() {
+        int numHijos = 0;
         if (hijos != null) {
-            numHijos=hijos.length - numHijosLess18();
+            numHijos = hijos.length - numHijosLess18();
         }
         return numHijos;
     }
-    
+
     /**
      * Devuele la cantidad de hijos del empleado
      *
@@ -99,13 +100,14 @@ public class Empleado {
 
     }
 
-    /**Pasar a empresa
+    /**
+     * Pasar a empresa
      *
      * @return Devuelve al primer hijo introducido del empleado
      */
     public String fechaHijoZero() {
         String fecha = "";
-        if (hijos.length != 0) {
+        if (hijos != null) {
             fecha = hijos[0].stringFecha();
         }
         return fecha;
@@ -118,10 +120,11 @@ public class Empleado {
      */
     public String fechaHijosResto() {
         String fechas = "";
-        for (int i = 1; i < hijos.length; i++) {
-            fechas = fechas + "\n\t\t\t" + hijos[i].stringFecha();
+        if (hijos != null) {
+            for (int i = 1; i < hijos.length; i++) {
+                fechas = fechas + "\n\t\t\t" + hijos[i].stringFecha();
+            }
         }
-
         return fechas;
     }
 

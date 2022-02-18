@@ -4,6 +4,8 @@
  */
 package barrayej6;
 
+import inputs.EntradaNumeros;
+import inputs.EntradaTextos;
 import objects.Fecha;
 
 /**
@@ -16,8 +18,15 @@ public class Sanitario {
     int[] articulos;
     int proyectoAherido;
     int situacionPersonal;
+    
     static String[] situaciones=new String[]{"Soltero","Casado"};
-
+    static int[][] importeArticulos=new int[][]{
+        {20,1500},
+        {40,1800},
+        {50,3000},
+        {Integer.MAX_VALUE,4300}
+    };
+    
     public Sanitario() {
     }
 
@@ -39,8 +48,10 @@ public class Sanitario {
     public void grabarArticulos(){
         Fecha hoy=new Fecha();
         hoy.setToday();
-        
-        
+        this.articulos=new int[hoy.getMes()];
+        for(int i=0;i<this.articulos.length;i++){
+            this.articulos[i]=EntradaNumeros.numIntGrater("Numero de articulos en "+Fecha.monthName(i-1),0);
+        }
     }
     
     

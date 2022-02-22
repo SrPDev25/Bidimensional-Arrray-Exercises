@@ -64,15 +64,27 @@ public class Hospital {
 
         printProyectos();
         for (int i = 0; i < proyectos.length; i++) {
-            personalProyecto = EntradaNumeros.numIntBetween("Sanitarios en el proyecto " + proyectos[i].getDenominacion(), 0, 100);
+            personalProyecto = EntradaNumeros.numIntBetween("Sanitarios en el proyecto " + proyectos[i].getDenominacion()+": ", 0, 100);
             totalPersonal += personalProyecto;
             proyectos[i].setParticipantes(personalProyecto);
         }
         if (totalPersonal != 0) {
             sanitarios = new Sanitario[totalPersonal];
-            
+            int posSanitario = 0;
+            for (int i = 0; i < proyectos.length; i++) {
+                if (proyectos[i].getParticipantes() != 0) {
+                    System.out.println("Proyecto " + proyectos[i].getDenominacion());
+                }
+                for (int j = 0; j < proyectos[i].getParticipantes(); j++) {
+                    sanitarios[posSanitario]=new Sanitario(i);
+                    System.out.println("Sanitario " + (posSanitario + 1));
+                    printCategorias();
+                    categoria = (EntradaNumeros.numIntBetween("Categoria del sanitario: ", 1, categorias.length) - 1);
+                    posSanitario++;
+                }
+            }
+
             printSituacionPersonal();
-            printCategorias();
         }
     }
 

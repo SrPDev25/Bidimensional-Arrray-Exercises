@@ -18,10 +18,11 @@ public class Sanitario {
     private int[] articulos;
     private int proyectoAherido;
     private int situacionPersonal;
-    
-    public Sanitario() {
-    }
 
+    public Sanitario(int proyectoAherido) {
+        this.proyectoAherido = proyectoAherido;
+    }
+    
     /**
      * Introduce todos los datos del sanitario
      * @param nombre
@@ -30,11 +31,14 @@ public class Sanitario {
      * @param proyectoAdherido
      * @param situacionPersonal 
      */
-    public void grabarInfo(String nombre, int categoria, int proyectoAdherido, int situacionPersonal) {
+    public void grabarInfo(String nombre, int categoria, int situacionPersonal) {
         this.nombre = nombre;
         this.categoria = categoria;
-        this.proyectoAherido = proyectoAdherido;
         this.situacionPersonal = situacionPersonal;
+    }
+
+    public void setProyectoAherido(int proyectoAherido) {
+        this.proyectoAherido = proyectoAherido;
     }
     
     public void grabarArticulos(){

@@ -6,6 +6,7 @@ package barrayej6;
 
 import inputs.EntradaNumeros;
 import inputs.EntradaTextos;
+import objects.Fecha;
 
 /**
  *
@@ -91,8 +92,18 @@ public class Hospital {
 
         }
     }
+    
+    
+    
 
     //"INTERFACE" PRINTS
+    public void informe(){
+        Fecha hoy=new Fecha();
+        hoy.setToday();
+        System.out.println("\t\t\tINFORME PERSONAL"
+                + "\n\t\t\tMES:"+Fecha.monthName(hoy.getMes()));
+    }
+    
     private void printProyectos() {
         System.out.println("\n\tPROYECTOS EN CURSO\n");
         for (Proyecto i : proyectos) {

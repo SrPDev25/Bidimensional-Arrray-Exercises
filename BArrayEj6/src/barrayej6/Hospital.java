@@ -19,6 +19,7 @@ public class Hospital {
 
     public Hospital(int numSanitarios) {
         sanitarios = new Sanitario[numSanitarios];
+        generateTables();
     }
 
     private void generateTables() {

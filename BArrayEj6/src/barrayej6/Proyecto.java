@@ -15,9 +15,9 @@ public class Proyecto {
     Fecha fechaComienzo;
     int importeAnual;
     
-    public Proyecto(String denominacion, Fecha fechaComienzo, int importeAnual) {
+    public Proyecto(String denominacion, String fechaComienzo, int importeAnual) {
         this.denominacion = denominacion;
-        this.fechaComienzo = fechaComienzo;
+        this.fechaComienzo = new Fecha(fechaComienzo);
         this.importeAnual = importeAnual;
     }
     

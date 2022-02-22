@@ -13,19 +13,11 @@ import objects.Fecha;
  * @author dam
  */
 public class Sanitario {
-    String nombre;
-    int categoria;
-    int[] articulos;
-    int proyectoAherido;
-    int situacionPersonal;
-    
-    static String[] situaciones=new String[]{"Soltero","Casado"};
-    static int[][] importeArticulos=new int[][]{
-        {20,1500},
-        {40,1800},
-        {50,3000},
-        {Integer.MAX_VALUE,4300}
-    };
+    private String nombre;
+    private int categoria;
+    private int[] articulos;
+    private int proyectoAherido;
+    private int situacionPersonal;
     
     public Sanitario() {
     }
@@ -35,13 +27,13 @@ public class Sanitario {
      * @param nombre
      * @param categoria
      * @param articulos
-     * @param proyectoAherido
+     * @param proyectoAdherido
      * @param situacionPersonal 
      */
-    public void grabarInfo(String nombre, int categoria, int proyectoAherido, int situacionPersonal) {
+    public void grabarInfo(String nombre, int categoria, int proyectoAdherido, int situacionPersonal) {
         this.nombre = nombre;
         this.categoria = categoria;
-        this.proyectoAherido = proyectoAherido;
+        this.proyectoAherido = proyectoAdherido;
         this.situacionPersonal = situacionPersonal;
     }
     

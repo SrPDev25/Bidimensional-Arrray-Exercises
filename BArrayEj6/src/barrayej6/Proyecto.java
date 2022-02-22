@@ -11,9 +11,10 @@ import objects.Fecha;
  * @author dam
  */
 public class Proyecto {
-    String denominacion;
-    Fecha fechaComienzo;
-    int importeAnual;
+    private String denominacion;
+    private Fecha fechaComienzo;
+    private int importeAnual;
+    private int participantes;
     
     public Proyecto(String denominacion, String fechaComienzo, int importeAnual) {
         this.denominacion = denominacion;
@@ -31,6 +32,14 @@ public class Proyecto {
 
     public int getImporteAnual() {
         return importeAnual;
+    }
+    
+    public int getParticipantes() {
+        return participantes;
+    }
+
+    public void setParticipantes(int participantes) {
+        this.participantes = participantes;
     }
     
     

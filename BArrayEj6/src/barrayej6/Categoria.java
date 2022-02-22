@@ -6,16 +6,16 @@ package barrayej6;
  * @author dam
  */
 public class Categoria {
-    String determinacion;
-    int suplemento;
+    private String denominacion;
+    private int suplemento;
 
     public Categoria(String determinacion, int suplemento) {
-        this.determinacion = determinacion;
+        this.denominacion = determinacion;
         this.suplemento = suplemento;
     }
 
-    public String getDeterminacion() {
-        return determinacion;
+    public String getDenominacion() {
+        return denominacion;
     }
 
     public int getSuplemento() {

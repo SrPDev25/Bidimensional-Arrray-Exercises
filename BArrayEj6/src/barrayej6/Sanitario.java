@@ -46,7 +46,7 @@ public class Sanitario {
         hoy.setToday();
         this.articulos=new int[hoy.getMes()];
         for(int i=0;i<this.articulos.length;i++){
-            this.articulos[i]=EntradaNumeros.numIntGrater("Numero de articulos en "+Fecha.monthName(i-1),0);
+            this.articulos[i]=EntradaNumeros.numIntGrater("Numero de articulos en "+Fecha.monthName(i-1)+": ",0);
         }
     }
     

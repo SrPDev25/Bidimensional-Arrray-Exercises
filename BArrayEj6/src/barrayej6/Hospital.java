@@ -58,13 +58,13 @@ public class Hospital {
     }
 
     public void dataInput() {
-        int categoria, proyectoAdherido, situacionPersonal, personalProyecto;
+        int totalPersonal = 0, personalProyecto;
+        int categoria, situacionPersonal;
         String nombre;
-        int totalPersonal = 0;
 
         printProyectos();
         for (int i = 0; i < proyectos.length; i++) {
-            personalProyecto = EntradaNumeros.numIntBetween("Sanitarios en el proyecto " + proyectos[i].getDenominacion()+": ", 0, 100);
+            personalProyecto = EntradaNumeros.numIntBetween("Sanitarios en el proyecto " + proyectos[i].getDenominacion() + ": ", 0, 100);
             totalPersonal += personalProyecto;
             proyectos[i].setParticipantes(personalProyecto);
         }
@@ -73,27 +73,30 @@ public class Hospital {
             int posSanitario = 0;
             for (int i = 0; i < proyectos.length; i++) {
                 if (proyectos[i].getParticipantes() != 0) {
-                    System.out.println("Proyecto " + proyectos[i].getDenominacion());
+                    System.out.println("\nProyecto " + proyectos[i].getDenominacion());
                 }
                 for (int j = 0; j < proyectos[i].getParticipantes(); j++) {
-                    sanitarios[posSanitario]=new Sanitario(i);
+                    sanitarios[posSanitario] = new Sanitario(i);
                     System.out.println("Sanitario " + (posSanitario + 1));
+                    nombre=EntradaTextos.inputString("Nombre del sanitario: ");
                     printCategorias();
                     categoria = (EntradaNumeros.numIntBetween("Categoria del sanitario: ", 1, categorias.length) - 1);
+                    printSituacionPersonal();
+                    situacionPersonal=(EntradaNumeros.numIntBetween("Situacion personal: ", 1, situaciones.length)-1);
+                    sanitarios[posSanitario].grabarInfo(nombre, categoria, situacionPersonal);
+                    sanitarios[posSanitario].grabarArticulos();
                     posSanitario++;
                 }
             }
 
-            printSituacionPersonal();
         }
     }
 
     //"INTERFACE" PRINTS
     private void printProyectos() {
-        System.out.println("\n\t\tPROYECTOS EN CURSO\n"
-                + "DENOMINACION\t\tFECHA DE INICIO\tIMPORTE ANUAL");
+        System.out.println("\n\tPROYECTOS EN CURSO\n");
         for (Proyecto i : proyectos) {
-            System.out.println(i.getDenominacion() + "\t\t" + i.getFechaComienzo().stringFecha() + "\t" + i.getImporteAnual());
+            System.out.println(i.getDenominacion());
         }
     }
 

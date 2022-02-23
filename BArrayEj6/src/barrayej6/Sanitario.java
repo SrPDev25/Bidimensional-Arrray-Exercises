@@ -13,6 +13,7 @@ import objects.Fecha;
  * @author dam
  */
 public class Sanitario {
+
     private String nombre;
     private int categoria;
     private int[] articulos;
@@ -22,14 +23,15 @@ public class Sanitario {
     public Sanitario(int proyectoAherido) {
         this.proyectoAherido = proyectoAherido;
     }
-    
+
     /**
      * Introduce todos los datos del sanitario
+     *
      * @param nombre
      * @param categoria
      * @param articulos
      * @param proyectoAdherido
-     * @param situacionPersonal 
+     * @param situacionPersonal
      */
     public void grabarInfo(String nombre, int categoria, int situacionPersonal) {
         this.nombre = nombre;
@@ -40,13 +42,17 @@ public class Sanitario {
     public void setProyectoAherido(int proyectoAherido) {
         this.proyectoAherido = proyectoAherido;
     }
-    
-    public void grabarArticulos(int mesProyecto){
-        Fecha hoy=new Fecha();
+
+    public void grabarArticulos(int mesProyecto) {
+        Fecha hoy = new Fecha();
         hoy.setToday();
-        this.articulos=new int[12];
-        for(int i=0;i<this.articulos.length;i++){
-            this.articulos[i]=EntradaNumeros.numIntGrater("Numero de articulos en "+Fecha.monthName(i+1)+": ",0);
+        int anno = hoy.getAnno();
+        this.articulos = new int[12];
+        for (int i = 0; i < this.articulos.length; i++) {
+            if (mesProyecto <= hoy.getMes()) {
+                this.articulos[i] = EntradaNumeros.numIntGrater("Numero de articulos en " + Fecha.monthName(i + 1) + " de " + anno, 0);
+            }else
+                this.articulos[i] = EntradaNumeros.numIntGrater("Numero de articulos en " + Fecha.monthName(i + 1) + " de " + (anno-1), 0);
         }
     }
 
@@ -69,11 +75,7 @@ public class Sanitario {
     public int getSituacionPersonal() {
         return situacionPersonal;
     }
-    
-    
-    
-    
-    
+
 }
 /*
 Sanitario(String nombre, int categoría, int[] articulos, int proyectoAdherido, int situacionPersonal, static String[] situaciones)

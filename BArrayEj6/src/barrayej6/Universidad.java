@@ -85,7 +85,7 @@ public class Universidad {
                     printSituacionPersonal();
                     situacionPersonal=(EntradaNumeros.numIntBetween("Situacion personal: ", 1, situaciones.length)-1);
                     sanitarios[posSanitario].grabarInfo(nombre, categoria, situacionPersonal);
-                    sanitarios[posSanitario].grabarArticulos(proyectos[sanitarios[posSanitario]].getFechaComienzo().getMes());
+                    sanitarios[posSanitario].grabarArticulos(proyectos[sanitarios[posSanitario].getProyectoAherido()].getFechaComienzo().getMes());
                     posSanitario++;
                 }
             }

@@ -70,7 +70,7 @@ public class Empresa {
         int annosTrabajando;
         int x = 0, y = 0;
         if (empleadoC.numHijos() != 0) {
-            if (empleadoC.numHijos() < incentivo[0].length) {
+            if (empleadoC.numHijosLess18() < incentivo[0].length) {
                 x = empleadoC.numHijos() - 1;
             } else {
                 x = incentivo[0].length-1;

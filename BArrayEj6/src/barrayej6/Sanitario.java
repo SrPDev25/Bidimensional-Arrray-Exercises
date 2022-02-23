@@ -41,10 +41,10 @@ public class Sanitario {
         this.proyectoAherido = proyectoAherido;
     }
     
-    public void grabarArticulos(){
+    public void grabarArticulos(int mesProyecto){
         Fecha hoy=new Fecha();
         hoy.setToday();
-        this.articulos=new int[hoy.getMes()];
+        this.articulos=new int[12];
         for(int i=0;i<this.articulos.length;i++){
             this.articulos[i]=EntradaNumeros.numIntGrater("Numero de articulos en "+Fecha.monthName(i+1)+": ",0);
         }

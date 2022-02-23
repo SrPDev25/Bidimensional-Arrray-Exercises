@@ -55,7 +55,9 @@ public class Universidad {
 
         hastaImporteB = new int[]{3000, 5000, 10000, Integer.MAX_VALUE};
     }
-
+    /**
+     * Pide los datos de los sanitarios para cargar
+     */
     public void dataInput() {
         int totalPersonal = 0, personalProyecto;
         int categoria, situacionPersonal;
@@ -83,14 +85,22 @@ public class Universidad {
                     printSituacionPersonal();
                     situacionPersonal=(EntradaNumeros.numIntBetween("Situacion personal: ", 1, situaciones.length)-1);
                     sanitarios[posSanitario].grabarInfo(nombre, categoria, situacionPersonal);
-                    sanitarios[posSanitario].grabarArticulos();
+                    sanitarios[posSanitario].grabarArticulos(proyectos[sanitarios[posSanitario]].getFechaComienzo().getMes());
                     posSanitario++;
                 }
             }
-            
-
         }
     }
+    
+//    public void grabarArticulos(){
+//        Fecha hoy=new Fecha();
+//        hoy.setToday();
+//        this.articulos=new int[12];
+//        for(int i=0;i<this.articulos.length;i++){
+//            this.articulos[i]=EntradaNumeros.numIntGrater("Numero de articulos en "+Fecha.monthName(i+1)+": ",0);
+//        }
+//    }
+    
     
     private float importeNeto(int posSanitario){
         float importeNeto=0;

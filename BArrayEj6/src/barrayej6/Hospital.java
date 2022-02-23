@@ -37,10 +37,8 @@ public class Hospital {
         situaciones = new String[]{"Soltero", "Casado", "Otros", "Es complicado"};
 
         importeArticulos = new int[][]{
-            {20, 1500},
-            {40, 1800},
-            {50, 3000},
-            {Integer.MAX_VALUE, 4300}
+            {20,40,50,Integer.MAX_VALUE},
+            {1500,1800,3000,4300}
         };
 
         categorias = new Categoria[]{
@@ -94,15 +92,56 @@ public class Hospital {
         }
     }
     
+    private float importeNeto(int posSanitario){
+        float importeNeto=0;
+        
+        
+        return importeNeto;
+    }
     
+    /**
+     * Calcula el importe bruto de un sanitario
+     * @param posSanitario
+     * @return 
+     */
+    private int calculateImporteBruto(int posSanitario){
+        int importeBruto,importeAnual,importeArticulos,suplemento;
+        importeAnual=proyectos[(sanitarios[posSanitario].getProyectoAherido())-1].getImporteAnual();
+        importeArticulos=takeImporteArticulos(posSanitario);
+        suplemento=categorias[(sanitarios[posSanitario].getCategoria())-1].getSuplemento();
+        
+        importeBruto=importeAnual+importeArticulos+suplemento;
+        return importeBruto;
+    }
     
+    /**
+     * Coge el importe por articulos de un sanitario
+     * @param posSanitario
+     * @return 
+     */
+    private int takeImporteArticulos(int posSanitario){
+        Fecha hoy=new Fecha();
+        hoy.setToday();
+        int numArticulos=sanitarios[posSanitario].getArticulos()[(hoy.getMes()-1)];
+        int importe=0;
+        int pos=0;
+        while(numArticulos<=importeArticulos[0][pos]){
+            pos++;
+        }
+        importe=importeArticulos[1][pos];
+        
+        return importe;
+    }
 
     //"INTERFACE" PRINTS
     public void informe(){
         Fecha hoy=new Fecha();
         hoy.setToday();
         System.out.println("\t\t\tINFORME PERSONAL"
-                + "\n\t\t\tMES:"+Fecha.monthName(hoy.getMes()));
+                + "\n\t\t\tMES:"+Fecha.monthName(hoy.getMes())
+        +"\nFecha: "+hoy.stringFecha()
+        +"\nNOMBRE\tDENOMINACION\t\tARTICULOS PUBLICADOS\tIMPORTE NETO");
+        
     }
     
     private void printProyectos() {

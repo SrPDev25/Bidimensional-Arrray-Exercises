@@ -49,6 +49,26 @@ public class Sanitario {
             this.articulos[i]=EntradaNumeros.numIntGrater("Numero de articulos en "+Fecha.monthName(i+1)+": ",0);
         }
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getCategoria() {
+        return categoria;
+    }
+
+    public int[] getArticulos() {
+        return articulos;
+    }
+
+    public int getProyectoAherido() {
+        return proyectoAherido;
+    }
+
+    public int getSituacionPersonal() {
+        return situacionPersonal;
+    }
     
     
     

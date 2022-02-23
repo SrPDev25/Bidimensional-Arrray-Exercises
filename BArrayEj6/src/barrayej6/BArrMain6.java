@@ -12,9 +12,9 @@ public class BArrMain6 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Hospital HUBU =new Hospital();
-        HUBU.dataInput();
-        HUBU.informe();
+        Universidad UBU =new Universidad();
+        UBU.dataInput();
+        UBU.informe();
         
     }
     

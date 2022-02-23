@@ -12,7 +12,7 @@ import objects.Fecha;
  *
  * @author dam
  */
-public class Hospital {
+public class Universidad {
 
     Proyecto[] proyectos;
     Sanitario[] sanitarios;
@@ -22,7 +22,7 @@ public class Hospital {
     int[] hastaImporteB;
     String[] situaciones;
 
-    public Hospital() {
+    public Universidad() {
         generateTables();
     }
 

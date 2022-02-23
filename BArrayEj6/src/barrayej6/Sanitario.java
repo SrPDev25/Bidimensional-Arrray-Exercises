@@ -49,10 +49,10 @@ public class Sanitario {
         int anno = hoy.getAnno();
         this.articulos = new int[12];
         for (int i = 0; i < this.articulos.length; i++) {
-            if (mesProyecto <= hoy.getMes()) {
-                this.articulos[i] = EntradaNumeros.numIntGrater("Numero de articulos en " + Fecha.monthName(i + 1) + " de " + anno, 0);
+            if (mesProyecto > i) {
+                this.articulos[i] = EntradaNumeros.numIntGrater("Numero de articulos en " + Fecha.monthName(i + 1) + " de " + anno+": ", 0);
             }else
-                this.articulos[i] = EntradaNumeros.numIntGrater("Numero de articulos en " + Fecha.monthName(i + 1) + " de " + (anno-1), 0);
+                this.articulos[i] = EntradaNumeros.numIntGrater("Numero de articulos en " + Fecha.monthName(i + 1) + " de " + (anno-1)+": ", 0);
         }
     }
 

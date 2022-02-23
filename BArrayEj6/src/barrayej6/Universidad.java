@@ -103,7 +103,8 @@ public class Universidad {
     
     
     private float importeNeto(int posSanitario){
-        float importeNeto=0;
+        float importeNeto=0,irpf;
+        float importeBruto=calculateImporteBruto(posSanitario);
         
         
         return importeNeto;

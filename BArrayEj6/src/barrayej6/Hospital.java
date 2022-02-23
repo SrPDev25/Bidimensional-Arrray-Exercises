@@ -89,6 +89,7 @@ public class Hospital {
                     posSanitario++;
                 }
             }
+            
 
         }
     }

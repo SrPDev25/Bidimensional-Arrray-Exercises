@@ -56,6 +56,14 @@ public class Sanitario {
         }
     }
 
+    public int getTotArticulos(){
+        int totArticulos=0;
+        for(int i: this.articulos){
+            totArticulos+=i;
+        }
+        return totArticulos;
+    }
+    
     public String getNombre() {
         return nombre;
     }
@@ -64,8 +72,8 @@ public class Sanitario {
         return categoria;
     }
 
-    public int[] getArticulos() {
-        return articulos;
+    public int getArticulos(int numArticulo) {
+        return articulos[numArticulo];
     }
 
     public int getProyectoAherido() {

@@ -1,6 +1,8 @@
 
 package barrayej6;
 
+import inputs.EntradaNumeros;
+
 /**
  *
  * @author dam
@@ -15,7 +17,6 @@ public class BArrMain6 {
         Universidad UBU =new Universidad();
         UBU.dataInput();
         UBU.informe();
-        
     }
     
 }

@@ -92,22 +92,26 @@ public class Universidad {
         }
     }
     
-//    public void grabarArticulos(){
-//        Fecha hoy=new Fecha();
-//        hoy.setToday();
-//        this.articulos=new int[12];
-//        for(int i=0;i<this.articulos.length;i++){
-//            this.articulos[i]=EntradaNumeros.numIntGrater("Numero de articulos en "+Fecha.monthName(i+1)+": ",0);
-//        }
-//    }
-    
-    
-    private float importeNeto(int posSanitario){
+    /**
+     * calcula el importe neto 
+     * @param posSanitario se pide la posicion del empleado
+     * @return 
+     */
+    private float calculateimporteNeto(int posSanitario){
         float importeNeto=0,irpf;
-        float importeBruto=calculateImporteBruto(posSanitario);
-        
-        
+        int importeBruto=calculateImporteBruto(posSanitario);
+        importeNeto=importeBruto +(importeBruto*(takeIRPF(posSanitario, importeBruto)/100));
         return importeNeto;
+        
+    }
+    
+    
+    private float takeIRPF(int posSanitario, int importeBruto){
+        int pos=0;
+        while(importeBruto>hastaImporteB[pos]){
+            pos++;
+        }
+        return irpf[this.sanitarios[posSanitario].getSituacionPersonal()][pos];
     }
     
     /**
@@ -117,34 +121,30 @@ public class Universidad {
      */
     private int calculateImporteBruto(int posSanitario){
         int importeBruto,importeAnual,importeArticulos,suplemento;
-        importeAnual=proyectos[(sanitarios[posSanitario].getProyectoAherido())-1].getImporteAnual();
+        importeAnual=proyectos[(sanitarios[posSanitario].getProyectoAherido())].getImporteAnual();
         importeArticulos=takeImporteArticulos(posSanitario);
-        suplemento=categorias[(sanitarios[posSanitario].getCategoria())-1].getSuplemento();
+        suplemento=categorias[(sanitarios[posSanitario].getCategoria())].getSuplemento();
         
         importeBruto=importeAnual+importeArticulos+suplemento;
         return importeBruto;
     }
     
     /**
-     * Coge el importe por articulos de un sanitario
-     * @param posSanitario
-     * @return 
+     * Obtiene el importe por la cantidad de articulos del un sanitario
+     * @param posSanitario se indica al sanitario al que referimos
+     * @return devuelve el importe
      */
     private int takeImporteArticulos(int posSanitario){
-        Fecha hoy=new Fecha();
-        hoy.setToday();
-        int numArticulos=sanitarios[posSanitario].getArticulos()[(hoy.getMes()-1)];
-        int importe=0;
         int pos=0;
-        while(numArticulos<=importeArticulos[0][pos]){
+        int totArticulos=sanitarios[posSanitario].getTotArticulos();
+        while(importeArticulos[0][pos]<totArticulos){
             pos++;
         }
-        importe=importeArticulos[1][pos];
-        
-        return importe;
+        return importeArticulos[1][pos];
     }
 
-    //"INTERFACE" PRINTS
+
+    //"INTERFAZ" PRINTS
     public void informe(){
         Fecha hoy=new Fecha();
         hoy.setToday();
@@ -153,6 +153,23 @@ public class Universidad {
         +"\nFecha: "+hoy.stringFecha()
         +"\nNOMBRE\tDENOMINACION\t\tARTICULOS PUBLICADOS\tIMPORTE NETO");
         
+        for(int i=0;i<sanitarios.length;i++){
+            System.out.println(sanitarios[i].getNombre()+"\t"+proyectos[ sanitarios[i].getProyectoAherido()].getDenominacion()+"\t\t"+stringArticuloZero(i)+"\t\t"+calculateimporteNeto(i)+stringArticuloNoZero(i));
+        }
+    }
+    
+    
+    private String stringArticuloZero(int posSanitario){
+        String zero="Enero: "+sanitarios[posSanitario].getArticulos(0);
+        return zero;
+    }
+    
+    private String stringArticuloNoZero(int posSanitario){
+        String articulos="";
+        for (int mes = 1; mes < 12; mes++) {
+            articulos= articulos+"\n\t\t\t\t"+Fecha.monthName(mes+1)+": "+sanitarios[posSanitario].getArticulos(mes);
+        }
+        return articulos;
     }
     
     private void printProyectos() {

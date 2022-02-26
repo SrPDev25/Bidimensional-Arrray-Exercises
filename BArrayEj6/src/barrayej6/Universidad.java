@@ -28,10 +28,10 @@ public class Universidad {
 
     private void generateTables() {
         proyectos = new Proyecto[]{
-            new Proyecto("COVID-19", "20/2/2020", 10000),
+            new Proyecto("COVID-19          ", "20/2/2020", 10000),
             new Proyecto("ENFERMEDADES RARAS", "15/4/2017", 4500),
-            new Proyecto("SIFILIS", "28/2/2019", 5500),//30/2/2019 no existe
-            new Proyecto("BIOQUIMICA", "15/8/2020", 6000)
+            new Proyecto("SIFILIS           ", "28/2/2019", 5500),//30/2/2019 no existe
+            new Proyecto("BIOQUIMICA        ", "15/8/2020", 6000)
         };
 
         situaciones = new String[]{"Soltero", "Casado", "Otros", "Es complicado"};
@@ -100,7 +100,7 @@ public class Universidad {
     private float calculateimporteNeto(int posSanitario){
         float importeNeto=0,irpf;
         int importeBruto=calculateImporteBruto(posSanitario);
-        importeNeto=importeBruto +(importeBruto*(takeIRPF(posSanitario, importeBruto)/100));
+        importeNeto=importeBruto -(importeBruto*(takeIRPF(posSanitario, importeBruto)/100));
         return importeNeto;
         
     }
@@ -148,13 +148,16 @@ public class Universidad {
     public void informe(){
         Fecha hoy=new Fecha();
         hoy.setToday();
-        System.out.println("\t\t\tINFORME PERSONAL"
+        System.out.println("\n\t\t\tINFORME PERSONAL"
                 + "\n\t\t\tMES:"+Fecha.monthName(hoy.getMes())
         +"\nFecha: "+hoy.stringFecha()
-        +"\nNOMBRE\tDENOMINACION\t\tARTICULOS PUBLICADOS\tIMPORTE NETO");
+        +"\nNOMBRE\tDENOMINACION\t\t\tARTICULOS PUBLICADOS\tIMPORTE NETO");
         
         for(int i=0;i<sanitarios.length;i++){
+            if (proyectos[sanitarios[i].getProyectoAherido()].getFechaComienzo().getMes()==hoy.getMes()) {
+                
             System.out.println(sanitarios[i].getNombre()+"\t"+proyectos[ sanitarios[i].getProyectoAherido()].getDenominacion()+"\t\t"+stringArticuloZero(i)+"\t\t"+calculateimporteNeto(i)+stringArticuloNoZero(i));
+            }
         }
     }
     

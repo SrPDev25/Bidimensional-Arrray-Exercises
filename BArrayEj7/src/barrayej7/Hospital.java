@@ -4,6 +4,10 @@
  */
 package barrayej7;
 
+import inputs.EntradaNumeros;
+import inputs.EntradaTextos;
+import objects.Fecha;
+
 /**
  *
  * @author dam
@@ -37,7 +41,27 @@ public class Hospital {
         };
     }
     
+    public void cargarInfo(){
+        String nombre;
+        int categoria, hijos,horasExtraRealizadas;
+        Fecha fechaAlta;
+        
+        for (int i = 0; i < empleados.length; i++) {
+            empleados[i]=new Empleado();
+            System.out.println("Empleado"+(i));
+            nombre=EntradaTextos.inputString("Nombre del empleado: ");
+            categoria=EntradaNumeros.numIntBetween("Categoria: ", 1, categorias.length);
+            
+            
+        }
+        
+    }
     
     
+    //------Prints------
+    
+    public void printCategorias(){
+        
+    }
     
 }

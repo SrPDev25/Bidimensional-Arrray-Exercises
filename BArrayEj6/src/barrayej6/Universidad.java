@@ -28,13 +28,13 @@ public class Universidad {
 
     private void generateTables() {
         proyectos = new Proyecto[]{
-            new Proyecto("COVID-19          ", "20/2/2020", 10000),
+            new Proyecto("COVID-19          ", "20/3/2020", 10000),
             new Proyecto("ENFERMEDADES RARAS", "15/4/2017", 4500),
-            new Proyecto("SIFILIS           ", "28/2/2019", 5500),//30/2/2019 no existe
+            new Proyecto("SIFILIS           ", "28/3/2019", 5500),//30/2/2019 no existe
             new Proyecto("BIOQUIMICA        ", "15/8/2020", 6000)
         };
 
-        situaciones = new String[]{"Soltero", "Casado", "Otros", "Es complicado"};
+        situaciones = new String[]{"Soltero", "Casado", "Otros"};
 
         importeArticulos = new int[][]{
             {20,40,50,Integer.MAX_VALUE},
@@ -70,7 +70,7 @@ public class Universidad {
             proyectos[i].setParticipantes(personalProyecto);
         }
         if (totalPersonal != 0) {
-            sanitarios = new Sanitario[totalPersonal];
+            sanitarios = new Sanitario[totalPersonal];//--No le gusta como meto la cantidad maxima de sanitarios
             int posSanitario = 0;
             for (int i = 0; i < proyectos.length; i++) {
                 if (proyectos[i].getParticipantes() != 0) {

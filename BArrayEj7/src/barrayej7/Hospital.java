@@ -41,6 +41,9 @@ public class Hospital {
         };
     }
     
+    /**
+     * pide la información de los empleados y la carga
+     */
     public void cargarInfo(){
         String nombre;
         int categoria, hijos,horasExtraRealizadas;
@@ -50,12 +53,19 @@ public class Hospital {
             empleados[i]=new Empleado();
             System.out.println("Empleado"+(i+1));
             nombre=EntradaTextos.inputString("Nombre del empleado: ");
+            printCategorias();
             categoria=EntradaNumeros.numIntBetween("Categoria: ", 1, categorias.length)-1;
+            fechaAlta=EntradaTextos.inputFechaPasada("Fecha de alta del empelado: ");
             hijos=EntradaNumeros.numIntGrater("Hijos a su cargo: ", 0);
             horasExtraRealizadas=EntradaNumeros.numIntBetween("Horas extra realizadas: ", 0, 80);
+            empleados[i].grabar(nombre, categoria, fechaAlta, hijos, horasExtraRealizadas);
         }
     }
     
+    /**
+     * Crea un informe de los salarios de los empleados
+     * (antes tienen que ser cargados sus datos)
+     */
     public void informe(){
         float media=mediaSueldo();
         if(empleados.length!=0){
@@ -72,6 +82,10 @@ public class Hospital {
         }
     }
 
+    /**
+     * calcula la media de todos los empleados
+     * @return 
+     */
     private float mediaSueldo(){
         float media=0;
         int totalSueldo=0;
@@ -85,6 +99,11 @@ public class Hospital {
         return media;
     }
     
+    /**
+     * calcula el sueldo de un empleado
+     * @param empleado
+     * @return 
+     */
     private float sueldo(Empleado empleado){
         float sueldo=0;
         int x,y;

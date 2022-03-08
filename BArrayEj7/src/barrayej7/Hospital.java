@@ -114,6 +114,7 @@ public class Hospital {
         }else{
             x=3;
         }
+        
         y=0;
         while(sueldo<hastaSueldo[y]){
             y++;

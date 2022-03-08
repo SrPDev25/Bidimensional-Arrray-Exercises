@@ -4,6 +4,9 @@
  */
 package barrayej7;
 
+import inputs.EntradaTextos;
+import objects.Fecha;
+
 /**
  *
  * @author dam
@@ -19,6 +22,8 @@ public class Categoria {
         this.precioHorasExtra = precioHorasExtra;
     }
 
+    
+    
     public String getDenominacion() {
         return denominacion;
     }

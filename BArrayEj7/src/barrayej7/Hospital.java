@@ -16,7 +16,7 @@ public class Hospital {
     Empleado[] empleados;
     Categoria[] categorias;
     int[][] irpf;
-    int[] precioHorasExtra;
+    int[] hastaSueldo;
 
     public Hospital(int numEmpleados) {
         empleados=new Empleado[numEmpleados];
@@ -30,7 +30,7 @@ public class Hospital {
             {25,20,15,10}
         };
         
-        precioHorasExtra=new int[]{1500,2000,3000,Integer.MAX_VALUE};
+        hastaSueldo=new int[]{0,1500,2000,3000};
         
         categorias=new Categoria[]{
             new Categoria("Medico",2500,50),
@@ -48,20 +48,55 @@ public class Hospital {
         
         for (int i = 0; i < empleados.length; i++) {
             empleados[i]=new Empleado();
-            System.out.println("Empleado"+(i));
+            System.out.println("Empleado"+(i+1));
             nombre=EntradaTextos.inputString("Nombre del empleado: ");
-            categoria=EntradaNumeros.numIntBetween("Categoria: ", 1, categorias.length);
-            
-            
+            categoria=EntradaNumeros.numIntBetween("Categoria: ", 1, categorias.length)-1;
+            hijos=EntradaNumeros.numIntGrater("Hijos a su cargo: ", 0);
+            horasExtraRealizadas=EntradaNumeros.numIntBetween("Horas extra realizadas: ", 0, 80);
         }
-        
     }
     
+    public void informe(){
+        float media;
+        int totalSueldo;
+        
+    }
+
+    private float mediaSueldo(){
+        float media=0;
+        int totalSueldo=0;
+        
+        for(Empleado i: empleados){
+            totalSueldo+=categorias[ i.getCategoria()].getSueldoBase();
+        }
+        return media;
+    }
     
+    private float sueldo(Empleado empleado){
+        float sueldo=0;
+        int x,y;
+        sueldo=categorias[empleado.getCategoria()].getSueldoBase()
+                +(categorias[empleado.getCategoria()].getPrecioHorasExtra()*empleado.getHorasExtraRealizadas());
+        if((empleado.getNumHijos()+1)<irpf[0].length){
+            x=empleado.getNumHijos();
+        }else{
+            x=3;
+        }
+        y=0;
+        while(sueldo<hastaSueldo[y]){
+            y++;
+        }
+        
+        sueldo=sueldo-(sueldo*(irpf[y][x]/100));
+        
+        return sueldo;
+    }
     //------Prints------
     
     public void printCategorias(){
-        
+        for (int i = 0; i < categorias.length; i++) {
+            System.out.println((i+1)+". "+categorias[i].getDenominacion());
+        }
     }
     
 }

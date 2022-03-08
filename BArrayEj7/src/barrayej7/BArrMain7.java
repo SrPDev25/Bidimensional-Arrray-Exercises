@@ -4,6 +4,9 @@
  */
 package barrayej7;
 
+import inputs.EntradaNumeros;
+import inputs.EntradaTextos;
+
 /**
  *
  * @author dam
@@ -14,7 +17,10 @@ public class BArrMain7 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-    
+        int numEmpleados=EntradaNumeros.numIntGrater("Introducir numero de empleados: ", 0);
+        Hospital entrada=new Hospital(numEmpleados);
+        entrada.cargarInfo();
+        entrada.informe();
         
     }
     

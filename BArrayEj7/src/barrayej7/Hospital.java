@@ -67,8 +67,11 @@ public class Hospital {
         int totalSueldo=0;
         
         for(Empleado i: empleados){
-            totalSueldo+=categorias[ i.getCategoria()].getSueldoBase();
+            totalSueldo+=sueldo(i);
         }
+        
+        media=totalSueldo/empleados.length;
+        
         return media;
     }
     
@@ -91,6 +94,7 @@ public class Hospital {
         
         return sueldo;
     }
+    
     //------Prints------
     
     public void printCategorias(){

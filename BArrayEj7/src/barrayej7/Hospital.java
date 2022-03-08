@@ -63,10 +63,13 @@ public class Hospital {
                     + "Sueldo medio de los empleados: "+media
                     + "\nFecha: "+Fecha.fechaCompleta()
                     + "\nCATEGORIA\tNOMBRE EMPLEADO\tSUELDO");
+            for(Empleado i: empleados){
+                if(sueldo(i)>=media){
+                    System.out.println(categorias[i.getCategoria()].getDenominacion()+"\t"+i.getNombre()+"\t"+sueldo(i));
+                }
+            }
             
         }
-        
-        
     }
 
     private float mediaSueldo(){

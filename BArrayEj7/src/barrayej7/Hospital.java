@@ -57,8 +57,15 @@ public class Hospital {
     }
     
     public void informe(){
-        float media;
-        int totalSueldo;
+        float media=mediaSueldo();
+        if(empleados.length!=0){
+            System.out.println("\t\tINFORME DE empleados ALTOS\n"
+                    + "Sueldo medio de los empleados: "+media
+                    + "\nFecha: "+Fecha.fechaCompleta()
+                    + "\nCATEGORIA\tNOMBRE EMPLEADO\tSUELDO");
+            
+        }
+        
         
     }
 
